@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const cors = require('cors');  // Импортируем пакет CORS
 const { getParameters, getTheme, saveParameters, saveTheme } = require('./routes/api');
@@ -7,7 +6,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Настраиваем CORS
-app.use(cors());
+app.use(cors({
+  origin: '*', // Разрешить любые источники
+  methods: ['GET', 'POST'],
+}));
+
 
 // Middleware для обработки JSON запросов
 app.use(express.json());
